@@ -1,6 +1,7 @@
 # MY NOTES ON SQL
 
 CREATE DATABASE College;
+
 USE College;
 
 CREATE TABLE studentstudent(
@@ -10,7 +11,9 @@ CREATE TABLE studentstudent(
 );
 
 INSERT INTO student values(1, "LUFFY", 19);
+
 INSERT INTO student values(2, "ZORO", 21);
+
 INSERT INTO student values(3, "SANJI", 22);
 
 SELECT * FROM student;
@@ -34,6 +37,7 @@ DROP TABLE student;
 -- --------------------------------------------------------
 
 CREATE DATABASE employee;
+
 USE employee;
 
 CREATE TABLE Info(
@@ -43,7 +47,9 @@ CREATE TABLE Info(
 );
 
 INSERT INTO Info values(1, "Peter Quill" , 10000);
+
 INSERT INTO Info values(2, "Drax" , 10000);
+
 INSERT INTO Info values(3, "Rocket" , 10000);
 
 Select * from Info;
@@ -54,6 +60,7 @@ INSERT INTO Info values(4, "Groot" , 10000),
 -- -----------------------------------------------------
 
 CREATE DATABASE IF NOT EXISTS XYZ;
+
 USE XYZ;
 
 CREATE TABLE EMPLOYEE_INFO(
@@ -74,6 +81,7 @@ CREATE TABLE ID(
 );
 
 INSERT INTO ID VALUES (100);
+
 INSERT INTO ID VALUES (101);
 
 SELECT * FROM ID;
@@ -89,7 +97,9 @@ CREATE TABLE EMP(
 );
 
 INSERT INTO EMP VALUES (100 ,"A", 23, "pune");
+
 INSERT INTO EMP VALUES (101 ,"A", 24, "delhi");
+
 INSERT INTO EMP VALUES (101 ,"B", 23, "delhi");
 
 SELECT * FROM EMP;
@@ -104,6 +114,7 @@ create table pirates(
 );
 
 insert into pirates values(1,"Thousand Sunny"); 
+
 insert into pirates (id) values (2); 
 
 select * from pirates;
@@ -121,9 +132,13 @@ id INT PRIMARY KEY,
 );
 
 INSERT INTO stud VALUES(1, "A", 18, "Delhi");
+
 INSERT INTO stud VALUES(2, "B", 18, "Delhi");
+
 INSERT INTO stud VALUES(3, "C", 16, "Delhi");
+
 INSERT INTO stud VALUES(4, "D", 16, "Delhi");
+
 INSERT INTO stud VALUES(5, "E", 17, "Delhi");
 
 SELECT * FROM stud;
@@ -131,6 +146,7 @@ SELECT * FROM stud;
 -- ------------------------------------------------------------
 
 CREATE DATABASE IF NOT EXISTS College;
+
 USE College;
 
 CREATE TABLE student (
@@ -142,10 +158,15 @@ CREATE TABLE student (
  );
  
  INSERT INTO student VALUES(101, "Anil", 78, "C", "Pune");
+ 
  INSERT INTO student VALUES(102, "Bhumika", 93, "A", "Mumbai");
+ 
  INSERT INTO student VALUES(103, "Chetan", 85, "B", "Mumbai");
+ 
  INSERT INTO student VALUES(104, "Dhruv", 96, "A", "Delhi");
+ 
  INSERT INTO student VALUES(105, "Emanuel", 12, "F", "Delhi");
+ 
  INSERT INTO student VALUES(106, "Farah", 82, "B", "Delhi");
  
 -- It can also be written in this way->
