@@ -55,6 +55,7 @@ INSERT INTO Info values(3, "Rocket" , 10000);
 Select * from Info;
 
 INSERT INTO Info values(4, "Groot" , 10000),
+
 (5, "Mantis" , 10000),(6, "Gamora" , 10000);
 
 -- -----------------------------------------------------
@@ -70,9 +71,14 @@ CREATE TABLE EMPLOYEE_INFO(
 );
 
 INSERT INTO EMPLOYEE_INFO values(1, "ADAM" , 25000),
+
 (2, "BOB" , 30000),(6, "CASEY" , 40000);
 
 SELECT * FROM  EMPLOYEE_INFO;
+
+-- UPDATE
+
+UPDATE EMPLOYEE_INFO SET ID = 3 WHERE ID = 6;
 
 -- ------------------------------------------------------
 
@@ -168,6 +174,7 @@ CREATE TABLE student (
  INSERT INTO student VALUES(105, "Emanuel", 12, "F", "Delhi");
  
  INSERT INTO student VALUES(106, "Farah", 82, "B", "Delhi");
+
  
 -- It can also be written in this way->
 
@@ -185,11 +192,62 @@ CREATE TABLE student (
 
 --  (106, "Farah", 82, "B", "Delhi");
 
+
+-- ALTER TABLE
+
+-- ADD COLUMN
+
+ALTER TABLE student ADD COLUMN age INT NOT NULL DEFAULT 18;
+
+-- DROP COLUMN
+
+ALTER TABLE student DROP COLUMN age;
+
+-- RENAME TABLE
+
+ALTER TABLE student RENAME TO students;
+
+ALTER TABLE students RENAME TO student;
+
+-- CHANGE COLUMN (name)
+
+ALTER TABLE student CHANGE COLUMN roll_no rollno INT ;
+
+-- MODIFY COLUMN (datatype and constrains)
+
+ALTER TABLE student MODIFY COLUMN marks FLOAT NOT NULL;
+
+ALTER TABLE student MODIFY COLUMN marks INT NOT NULL;
+
 SELECT * FROM student;
 
 SELECT name, marks, grade FROM student;
 
--- DISTINCT KEYWORD
+-- UPDATE DATA
+
+-- to off the safe mode we use
+
+SET SQL_SAFE_UPDATES = 0;  -- 0 to off 1 to on
+
+UPDATE student SET marks = 82 WHERE marks = 12;
+ 
+UPDATE student SET grade = "B" WHERE marks BETWEEN 80 AND 90;
+
+-- to increase the marks of every student by +1
+
+UPDATE student SET marks = marks+1;
+
+UPDATE student SET marks = 12 WHERE name = 105;
+
+-- DELETE 
+
+DELETE FROM student WHERE marks < 70; 
+
+-- be careful using DELETE because we can easily lose our precious data
+
+-- DELETE FROM student can delete the whole table 
+
+-- DISTINCT KEYWORD --
 
 SELECT DISTINCT city FROM student;
 
@@ -255,6 +313,7 @@ SELECT * FROM student ORDER BY marks DESC;
 
 SELECT * FROM student ORDER BY marks DESC LIMIT 3;
 
+
 -- AGGREGATE FUNCTIONS
 
 -- MAX()
@@ -274,16 +333,253 @@ SELECT SUM(marks) FROM student;
 SELECT AVG(marks) FROM student;
 
 -- COUNT()
-
 SELECT COUNT(roll_no) FROM student;
 
 -- GROUP BY()
-
 SELECT city FROM student GROUP BY city; 
 
--- GROUP BY / COUNT
+-- GROUP BY() / COUNT()
 
 SELECT city, COUNT(name) FROM student GROUP BY city; 
+
+-- it will throw an error because we need to include roll_no in group by
+
+-- SELECT city, roll_no, COUNT(name) FROM student GROUP BY city; 
+
+ SELECT city, roll_no, COUNT(name) FROM student GROUP BY city , roll_no; 
+ 
+ SELECT city, AVG(marks) FROM student GROUP BY city; 
+ 
+ SELECT city, MAX(marks) FROM student GROUP BY city; 
+
+-- PRACTISE QUERY- Query to find avg marks in each city in ascending order --
+
+SELECT city, AVG(marks) FROM student GROUP BY city ORDER BY avg(marks) ;
+
+SELECT city, AVG(marks) FROM student GROUP BY city ORDER BY city DESC ;
+
+SELECT grade, COUNT(name) FROM student GROUP BY grade;
+
+SELECT grade, COUNT(name) FROM student GROUP BY grade ORDER BY grade ASC;
+
+-- HAVING
+
+-- To count the no of students in each city where marks is more than 90.
+
+SELECT city, COUNT(name) FROM student GROUP BY city Having MAX(marks) > 90;  
+
+-- this will print the city marks and no of students who has marks more than 90. 
+
+SELECT city, COUNT(name), marks FROM student GROUP BY city, marks Having MAX(marks) > 90;
+
+-- this will cause an error of invalid use group function
+
+-- SELECT city, COUNT(name) FROM student WHERE MAX(marks) > 90 GROUP BY city;
+
+-- GENERAL ORDER
+SELECT city
+FROM student
+WHERE grade = "A"
+GROUP BY city
+HAVING MAX(marks) >= 93
+ORDER BY city DESC;
+
+-- -----------------------------------------------------------------------------------------
+
+CREATE DATABASE IF NOT EXISTS employee;
+
+USE employee;
+
+CREATE TABLE PAYMENT(
+ customer_id INT PRIMARY KEY,
+ customer VARCHAR(30),
+ mode VARCHAR(20),
+ city VARCHAR(20)
+);
+
+INSERT INTO PAYMENT (customer_id, customer, mode, city) VALUES
+
+ (101, "Olivia Barrett", "Netbanking", "Portland"),
+ 
+ (102, "Ethan Sinclair", "Credit Card", "Miami"),
+
+ (103, "Maya Harmadez", "Credit Card", "Seattle"),
+
+ (104, "Liam Donovan", "Netbanking", "Denver"),
+
+ (105, "Sophia Nguyen", "Credit Card", "New Orleans"),
+
+ (106, "Caleb Foster", "Debit Card", "Minneapolis"),
+
+ (107, "Ava Patel", "Debit Card", "Phoenix"),
+
+ (108, "Lucas Carter", "Netbaking", "Boston"),
+
+ (109, "Isabella Martinez", "Netbaking", "Nashville"),
+
+ (110, "Jaskson Brooks", "Credit Card", "Boston");
+
+SELECT mode, COUNT(customer) FROM PAYMENT GROUP BY mode;
+
+-- UPDATE
+
+UPDATE PAYMENT SET mode = "NetBanking" WHERE mode = "Netbaking";
+
+-- ADD COLUMN
+
+ALTER TABLE payment ADD COLUMN code INT DEFAULT 2543;
+
+-- MODIFY COLUMN
+
+ALTER TABLE payment MODIFY COLUMN code VARCHAR(5);
+
+-- if we add this data this will cause an error because it exceeds the limit
+
+INSERT INTO payment (customer_id , customer, city , code) VALUES
+(111, "James Barnes", "Seattle", 678574);
+ 
+-- RENAME TABLE
+
+ALTER TABLE payment RENAME TO payments ;
+
+ALTER TABLE payments RENAME TO payment ;
+
+-- CHANGE CLOUMN
+
+ALTER TABLE payment CHANGE COLUMN code Pincode INT NULL;
+
+-- DROP COLUMN
+
+ALTER TABLE payment DROP COLUMN Pincode;
+
+SELECT * FROM PAYMENT;
+
+-- ----------------------------------------------------------------
+
+-- Use of FOREIGN KEY --
+
+USE college;
+
+CREATE TABLE subjects(
+ id INT PRIMARY KEY,
+ subjects VARCHAR(10)
+);
+
+INSERT INTO subjects (id, subjects) VALUES
+
+ (101, "English"),
+ (102, "Maths"),
+ (103, "Science"),
+ (104, "Hindi"),
+ (105, "Computer");
+ 
+ -- UPDATE while cascading
+ 
+ UPDATE subjects SET id = 111 WHERE id = 102 ;
+ 
+ -- Deleting a row while cascading
+ 
+ DELETE FROM  subjects WHERE id = 103;
+ 
+SELECT * FROM subjects;
+ 
+ -- CASCADING the tables --
+ 
+ -- DROP TABLE teachers;
+ 
+CREATE TABLE teachers(
+ id INT PRIMARY KEY,
+ name VARCHAR(20),
+ dept_id INT,
+ FOREIGN KEY (dept_id) REFERENCES subjects (id)
+ ON UPDATE CASCADE
+ ON DELETE CASCADE
+);
+
+INSERT INTO teachers (id, name, dept_id) VALUES
+
+ (101, "Olivia Barrett", 102),
+ 
+ (102, "Ethan Sinclair", 105),
+
+ (103, "Maya Harmadez", 104),
+
+ (104, "Liam Donovan", 101),
+
+ (105, "Sophia Nguyen", 102),
+
+ (106, "Caleb Foster", 103),
+
+ (107, "Ava Patel", 105),
+
+ (108, "Lucas Carter", 102);
+
+SELECT * FROM teachers;
+
+-- ---------------------------------------------------------------------------
+
+-- USE OF TRUNCATE table --
+
+USE xyz;
+
+CREATE TABLE sample_Table(
+ name VARCHAR(1),
+ age INT 
+);
+
+INSERT INTO sample_Table (name, age) VALUES
+  ("A", 45),("B", 65),("C", 76);
+ 
+ SELECT * FROM sample_Table;
+ 
+ -- TRUNCATE (deletes data from thw table)
+ 
+ TRUNCATE TABLE sample_Table;
+ 
+ -- --------------------------------------------------------------
+ 
+ CREATE DATABASE HOGWARTS;
+ 
+ USE HOGWARTS;
+ 
+ CREATE TABLE Students (
+ ID INT PRIMARY KEY,
+ name VARCHAR(30),
+ marks INT NOT NULL,
+ grade VARCHAR(1)
+ );
+ 
+ INSERT INTO Students VALUES(101, "Neville Longbottom", 78, "C");
+ 
+ INSERT INTO Students VALUES(102, "Draco Malfoy", 93, "A");
+ 
+ INSERT INTO Students VALUES(103, "Harry Potter", 85, "B");
+ 
+ INSERT INTO Students VALUES(104, "Hermoine Granger", 96, "A");
+ 
+ INSERT INTO Students VALUES(105, "Ronald Weasley", 62, "D");
+ 
+ INSERT INTO Students VALUES(106, "Luna Lovegood", 82, "B");
+ 
+ SELECT * FROM Students;
+ 
+ -- PRACTICE QUERIES
+ 
+ -- CHANGE THE NAME 
+ 
+ ALTER TABLE Students CHANGE COLUMN name full_name VARCHAR(30);
+ 
+ -- disable the safe update
+ 
+ SET SQL_SAFE_UPDATES = 0;
+ 
+ -- DELETE all students scoring less than 80
+ 
+ DELETE FROM Students WHERE marks < 80;
+ 
+ -- DELETE grade column
+ 
+ ALTER TABLE Students DROP COLUMN grade; 
 
 
 
