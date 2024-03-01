@@ -587,6 +587,70 @@ INSERT INTO sample_Table (name, age) VALUES
  
  ALTER TABLE Students DROP COLUMN grade; 
 
+ ------------------------------------------------------------------------------------------------
+
+CREATE DATABASE IF NOT EXISTS SCHOOL;
+ 
+USE SCHOOL;
+
+CREATE TABLE student(
+ student_id INT PRIMARY KEY,
+ name VARCHAR(20)
+);
+ 
+INSERT INTO student (student_id, name) VALUES
+ (101, "Peter Parker"),(102, "Miles Morales"),(103, "Pietro Maximoff");
+ 
+SELECT * FROM student;
+ 
+CREATE TABLE course(
+ id INT PRIMARY KEY,
+ course VARCHAR(10)
+);
+ 
+INSERT INTO course (id, course) VALUES
+ (107, "English"),(102, "Maths"),(103, "Chemistry"),(110, "Hindi");
+ 
+SELECT * FROM course;
+ 
+-- JOINS IN SQL --
+
+-- INNER JOIN
+
+SELECT * FROM student INNER JOIN course ON student.student_id = course.id ;
+ 
+-- Using AS (Alias Name for table)--
+
+SELECT * FROM student AS s INNER JOIN course AS c ON s.student_id = c.id ; 
+
+-- LEFT JOIN
+
+SELECT * FROM student AS s LEFT JOIN course AS c ON s.student_id = c.id ; 
+
+-- RIGHT JOIN
+
+SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id ; 
+
+-- FULL JOIN using FEF / RIGHT / UNION
+
+SELECT * FROM student AS s LEFT JOIN course AS c ON s.student_id = c.id  
+UNION
+SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id ; 
+
+-- LEFT EXCLUSIVE JOIN
+
+SELECT * FROM student AS s LEFT JOIN course AS c ON s.student_id = c.id WHERE c.id IS NULL;
+
+-- RIGHT EXCLUSIVE JOIN
+
+SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id WHERE s.student_id IS NULL ;
+
+-- FULL EXCLUSIVE JOIN
+
+SELECT * FROM student AS s LEFT JOIN course AS c ON s.student_id = c.id WHERE c.id IS NULL
+UNION
+SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id WHERE s.student_id IS NULL ;
+
 
 
 
