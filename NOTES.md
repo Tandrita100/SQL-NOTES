@@ -749,6 +749,32 @@ SELECT * FROM student;
 
 SELECT name, marks FROM student WHERE marks > (SELECT AVG(marks) FROM student);
 
+-- to print the names of all students with even roll no.
+
+SELECT name, rollno FROM student WHERE rollno % 2 = 0;
+
+
+-- sub query
+
+SELECT name, rollno FROM student WHERE rollno IN (SELECT rollno FROM student WHERE rollno % 2 = 0);
+
+-- WITH FROM
+
+-- to print the max marks from the students of delhi
+
+SELECT MAX(marks) FROM student WHERE city = "Delhi";
+
+-- sub query with alias
+
+SELECT MAX(marks) FROM (SELECT * FROM student WHERE city = "Delhi") AS temp;
+
+-- for mumbai
+
+SELECT MAX(marks) FROM (SELECT * FROM student WHERE city = "Mumbai") AS temp;
+
+-- WITH SELECT
+
+SELECT (SELECT MAX(marks) FROM student) , name FROM student;
 
 
 
