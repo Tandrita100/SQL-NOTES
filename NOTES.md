@@ -282,6 +282,10 @@ SELECT name, marks, grade FROM student WHERE marks BETWEEN 50 AND 100;
 
 SELECT * FROM student WHERE marks +10 > 100;  
 
+-- %
+
+SELECT name FROM student WHERE rollno = marks % 2 = 0;
+
 -- > / AND
 
 SELECT * FROM student WHERE marks > 80 AND city = "Mumbai" ;
