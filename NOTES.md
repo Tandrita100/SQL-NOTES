@@ -660,6 +660,94 @@ SELECT * FROM student AS s LEFT JOIN course AS c ON s.student_id = c.id WHERE c.
 UNION
 SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id WHERE s.student_id IS NULL ;
 
+-- ---------------------------------------------------------------------------------------------------------------
+
+-- SELF JOIN --
+
+USE employee;
+
+CREATE TABLE employee(
+ id INT PRIMARY KEY,
+ name VARCHAR(20),
+ manager_id INT
+); 
+
+INSERT INTO employee(id, name, manager_id) VALUES
+ (101, "steve" , 104),(102, "bruce" , 103),(103, "tony", NULL),(104, "clint" , 102);
+ 
+SELECT * FROM employee;
+
+-- SIMPLE JOIN / SELF JOIN --
+
+SELECT * FROM employee AS A JOIN employee AS B ON A.id = B.manager_id;
+
+-- SELF JOIN to print just the names of a and b table
+
+SELECT a.name , b.name FROM employee AS A JOIN employee AS B ON A.id = B.manager_id;
+
+-- SELF JOIN to print just the names and manager names of a and b table
+
+SELECT a.name AS manager_name , b.name FROM employee AS A JOIN employee AS B ON A.id = B.manager_id;
+
+-- to print the name before manager name
+
+SELECT b.name ,a.name AS manager_name  FROM employee AS A JOIN employee AS B ON A.id = B.manager_id;
+
+-- UNION  (gives unique values) --
+
+SELECT * FROM employee 
+UNION
+SELECT * FROM employee;
+
+-- to print all unique names
+
+SELECT name FROM employee 
+UNION
+SELECT name FROM employee;
+
+-- UNION ALL (includes duplicate values) 
+
+SELECT * FROM employee 
+UNION ALL
+SELECT * FROM employee;
+
+-- to print all names in both tables
+
+SELECT name FROM employee 
+UNION ALL
+SELECT name FROM employee;
+
+-- ----------------------------------------------------------------------------------------------------
+
+USE school;
+
+-- UNION (gives unique values)-- 
+
+SELECT * FROM course 
+UNION
+SELECT * FROM student;
+
+-- UNION ALL (includes duplicate values) 
+
+SELECT * FROM course 
+UNION ALL
+SELECT * FROM student;
+
+-- --------------------------------------------------------------------------
+
+-- SUB QUERIES IN SQL --
+
+-- to print the names of students who scored more than the average marks
+
+ USE college;
+ 
+ SELECT AVG(marks) FROM student;
+ 
+ SELECT name, marks FROM student WHERE marks > 87.8000;
+  
+-- but the correct way to do this is using sub queries
+
+SELECT name, marks FROM student WHERE marks > (SELECT AVG(marks) FROM student);
 
 
 
