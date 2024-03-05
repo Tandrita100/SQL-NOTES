@@ -23,22 +23,18 @@ SELECT * FROM student;
 -- IF NOT EXISTS--
 
 CREATE DATABASE IF NOT exists College;
-\
-\
+
 -- DROP / IF EXISTS
 
 DROP DATABASE IF EXISTS D2;
-
 
 -- DISPLAYS ALL THE DATABASES--
 
 SHOW DATABASES;
 
-
 -- DISPLAYS ALL THE TABLES IN THE SELECTED DATABASE--
 
 SHOW TABLES;
-
 
 -- DELETES THE TABLE FROM THE DATABASE--
 
@@ -820,6 +816,10 @@ SELECT name FROM student WHERE name LIKE "A%" OR name LIKE "B%";
 -- Return all students from a city that starts with 'M' followed by one wildcard character, then 'mb' and then two wildcard characters:
 
 SELECT name, city FROM student WHERE city LIKE "M_mb__";
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 
