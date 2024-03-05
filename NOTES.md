@@ -776,5 +776,50 @@ SELECT MAX(marks) FROM (SELECT * FROM student WHERE city = "Mumbai") AS temp;
 
 SELECT (SELECT MAX(marks) FROM student) , name FROM student;
 
+-- ----------------------------------------------------------------------------------------------------
+
+-- VIEW IN SQL
+
+-- view creation 
+CREATE VIEW view1 AS 
+SELECT rollno, name, marks FROM student;
+
+SELECT * FROM view1;
+
+SELECT name FROM view1 WHERE rollno = 104;
+
+SELECT name, marks FROM view1 WHERE marks > 90;
+
+-- DROPING VIEW (deletes the view)
+DROP VIEW view1;
+
+-- ------------------------------------------------------------
+
+-- LIKE operator
+<br></br>
+-- using % 
+
+-- name starting with a
+
+SELECT name FROM student where name LIKE "a%";
+
+-- name ending with a
+
+SELECT name FROM student where name LIKE "%a";
+
+-- Return all students from a city that contains the letter 'M'
+
+SELECT name FROM student WHERE city LIKE "M%";
+
+-- Return all students that starts with 'a' or starts with 'b'
+
+SELECT name FROM student WHERE name LIKE "A%" OR name LIKE "B%";
+
+-- using _
+
+-- Return all students from a city that starts with 'M' followed by one wildcard character, then 'mb' and then two wildcard characters:
+
+SELECT name, city FROM student WHERE city LIKE "M_mb__";
+
 
 
