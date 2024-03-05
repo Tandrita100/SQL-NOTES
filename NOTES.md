@@ -23,8 +23,8 @@ SELECT * FROM student;
 -- IF NOT EXISTS--
 
 CREATE DATABASE IF NOT exists College;
-
-
+\
+\
 -- DROP / IF EXISTS
 
 DROP DATABASE IF EXISTS D2;
