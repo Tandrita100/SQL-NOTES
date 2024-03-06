@@ -860,6 +860,7 @@ INSERT INTO Supplier (item_no, city, country) VALUES
 
 SELECT city FROM Supplier WHERE EXISTS (SELECT item_name FROM clothingstore WHERE clothingstore.item_no = Supplier.item_no AND Price < 3000);
 
+
 -- ANY
 
 -- to print the item_name if it finds ANY records in the supplier table has item_no equal to 6
