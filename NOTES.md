@@ -817,7 +817,7 @@ SELECT name FROM student WHERE name LIKE "A%" OR name LIKE "B%";
 
 SELECT name, city FROM student WHERE city LIKE "M_mb__";
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 EXAMPLE QUERY : Query the Name of any student in STUDENTS who scored higher than  Marks. Order your output by the last three characters of each name. If two or more students both have names ending in the same last three characters (i.e.: Bobby, Robby, etc.), secondary sort them by ascending ID.
 
@@ -825,6 +825,44 @@ Sol: -- used right() function to find the last 3 characters in a string --
 
 SELECT NAME FROM STUDENTS WHERE Marks > 75 ORDER BY RIGHT(Name,3), ID ASC;
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+CREATE DATABASE Supermarket;
 
+USE Supermarket;
+ 
+CREATE TABLE clothingstore(
+  item_no INT PRIMARY KEY,
+  item_name VARCHAR(20),
+  price INT
+);
+ 
+INSERT INTO clothingstore (item_no, item_name, price) VALUES
+  (1, "Dresses", 5000), (2, "Pants" , 2000), (3, "Sarees" , 3000), (4, "Hoodies" , 4000),
+  (5, "Tops", 2000), (6, "Shirts", 2000), (7, "Skirts", 1500), (8, "Jeans" , 2500);
+  
+SELECT * FROM clothingstore;
 
+CREATE TABLE Supplier(
+  item_no INT PRIMARY KEY,
+  city VARCHAR(20),
+  country VARCHAR(20),
+  FOREIGN KEY(item_no) REFERENCES clothingstore(item_no)
+);
+ 
+INSERT INTO Supplier (item_no, city, country) VALUES
+  (1, "London", "UK"), (2, "New Orleans" , "USA"), (3, "Ann Arbor" , "USA"), (4, "Tokyo" , "Japan"),
+  (5, "New Orleans", "USA"), (6, "Tokyo", "Japan"), (7, "Ann Arbor", "USA"), (8, "London" , "UK");
+   
+-- EXISTS
+
+-- to print the city with a item price less than 3000
+
+SELECT city FROM Supplier WHERE EXISTS (SELECT item_name FROM clothingstore WHERE clothingstore.item_no = Supplier.item_no AND Price < 3000);
+
+-- ANY
+
+-- to print the item_name if it finds ANY records in the supplier table has item_no equal to 6
+
+SELECT item_name FROM clothingstore WHERE item_no = ANY (SELECT item_no FROM Supplier WHERE item_no = 6);
 
