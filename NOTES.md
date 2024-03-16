@@ -867,3 +867,11 @@ SELECT city FROM Supplier WHERE EXISTS (SELECT item_name FROM clothingstore WHER
 
 SELECT item_name FROM clothingstore WHERE item_no = ANY (SELECT item_no FROM Supplier WHERE item_no = 6);
 
+-- ALL
+
+SELECT ALL item_name FROM clothingstore WHERE price < 3000;
+
+-- to print the item_name if it finds ALL records in the supplier table has item_no equal to 4
+
+SELECT item_name FROM clothingstore WHERE item_no = ALL (SELECT item_no FROM Supplier WHERE item_no = 4);
+
