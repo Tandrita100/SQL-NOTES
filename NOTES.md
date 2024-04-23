@@ -875,3 +875,5 @@ SELECT ALL item_name FROM clothingstore WHERE price < 3000;
 
 SELECT item_name FROM clothingstore WHERE item_no = ALL (SELECT item_no FROM Supplier WHERE item_no = 4);
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
