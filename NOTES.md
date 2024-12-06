@@ -4,7 +4,7 @@ CREATE DATABASE College;
 
 USE College;
 
-CREATE TABLE studentstudent(
+CREATE TABLE student(
  id int primary key,
  name varchar(30),
  age int not null
