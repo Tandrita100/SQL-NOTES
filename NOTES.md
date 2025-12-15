@@ -877,3 +877,369 @@ SELECT item_name FROM clothingstore WHERE item_no = ALL (SELECT item_no FROM Sup
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+drop database D1
+
+-- ===============================--------------------------------------------------------------------------------------------------------------------------------------------------
+
+DROP database d2
+
+-- ===============================
+
+CREATE DATABASE College
+USE College
+
+-- ===============================
+
+CREATE DATABASE College
+
+-- ===============================
+
+CREATE DATABASE college
+
+-- ===============================
+
+USE College
+
+-- ===============================
+
+CREATE TABLE ID(
+ ID INT UNIQUE
+)
+
+-- ===============================
+
+INSERT INTO ID VALUES (100)
+
+-- ===============================
+
+SELECT * FROM ID
+
+-- ===============================
+
+INSERT INTO ID VALUES (101)
+
+-- ===============================
+
+SELECT * FROM ID
+
+-- ===============================
+
+SELECT * FROM student AS s LEFT JOIN course AS c ON s.student_id = c.id  
+UNION
+SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id
+
+-- ===============================
+
+USE supermarket
+
+-- ===============================
+
+select * from Customer
+
+-- ===============================
+
+CREATE TABLE sample(
+ item_no INT PRIMARY KEY,
+ item_name VARCHAR(20),
+ price INT
+)
+
+-- ===============================
+
+INSERT INTO sample (item_no, item_name, price) VALUES
+  (1, "Dresses", 5000), (2, "Pants" , 2000), (3, "Sarees" , 3000), (4, "Hoodies" , 4000),
+  (5, "Tops", 2000), (6, "Shirts", 2000), (7, "Skirts", 1500), (8, "Jeans" , 2500)
+
+-- ===============================
+
+CREATE TABLE student(
+ id int primary key,
+ name varchar(30),
+ age int not null
+)
+
+-- ===============================
+
+SELECT * FROM sample
+
+-- ===============================
+
+SELECT * FROM sample
+
+-- ===============================
+
+SELECT * INTO sample FROM clothingstore WHERE price < 3000
+
+-- ===============================
+
+DROP TABLE sample
+
+-- ===============================
+
+SELECT * INTO sample FROM clothingstore WHERE price < 3000
+
+-- ===============================
+
+SELECT item_name INTO sample FROM clothingstore WHERE price < 3000
+
+-- ===============================
+
+INSERT INTO student values(1, "LUFFY", 20)
+
+-- ===============================
+
+INSERT INTO student values(1, "LUFFY", 19)
+
+-- ===============================
+
+SELECT * FROM student
+
+-- ===============================
+
+INSERT INTO student values(2, "ZORO", 21)
+
+-- ===============================
+
+SELECT * FROM student
+
+-- ===============================
+
+INSERT INTO student values(3, "SANJI", 22)
+
+-- ===============================
+
+SELECT * FROM student
+
+-- ===============================
+
+CREATE TABLE EMP(
+ ID INT,
+ NAME VARCHAR(30),
+ age INT,
+ city VARCHAR(30),
+ PRIMARY KEY(ID,age)
+)
+
+-- ===============================
+
+INSERT INTO ID VALUES (100)
+
+-- ===============================
+
+INSERT INTO EMP VALUES (100)
+
+-- ===============================
+
+INSERT INTO EMP VALUES (100 ,"A", 23, "pune")
+
+-- ===============================
+
+INSERT INTO EMP VALUES (101 ,"A", 24, "delhi")
+
+-- ===============================
+
+INSERT INTO EMP VALUES (101 ,"B", 24, "delhi")
+
+-- ===============================
+
+INSERT INTO EMP VALUES (101 ,"B", 23, "delhi")
+
+-- ===============================
+
+SELECT * FROM EMP
+
+-- ===============================
+
+SELECT * FROM student
+
+-- ===============================
+
+CREATE TABLE `college`.`students` (
+  `id` INT NOT NULL,
+  `first_name` VARCHAR(45) NULL,
+  `last_name` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+
+-- ===============================
+
+SELECT * FROM students
+
+-- ===============================
+
+CREATE TABLE `realestateservices`.`properties` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(255) NOT NULL,
+  `description` VARCHAR(500) NULL,
+  `type` VARCHAR(50) NULL,
+  `price` DECIMAL(15,2) NOT NULL,
+  `user_id` INT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `user_id`
+    FOREIGN KEY ()
+    REFERENCES `realestateservices`.`users` ()
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+
+-- ===============================
+
+CREATE DATABASE D1
+
+-- ===============================
+
+CREATE TABLE `realestateservices`.`properties` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(255) NOT NULL,
+  `description` VARCHAR(500) NULL,
+  `type` VARCHAR(50) NULL,
+  `price` DECIMAL(15,2) NOT NULL,
+  `user_id` INT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_properties_user`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `realestateservices`.`users` (`id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE
+)
+
+-- ===============================
+
+SELECT * FROM student AS s LEFT JOIN course AS c ON s.student_id = c.id WHERE c.id IS NULL
+
+-- ===============================
+
+SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id WHERE s.id IS NULL
+
+-- ===============================
+
+SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id WHERE c.id IS NULL
+
+-- ===============================
+
+SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id WHERE s.id IS NULL
+
+-- ===============================
+
+SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id
+
+-- ===============================
+
+SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id WHERE s.student_id IS NULL
+
+-- ===============================
+
+select * from Orders
+
+-- ===============================
+
+CREATE TABLE properties (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  description VARCHAR(500),
+  type VARCHAR(50) NOT NULL,
+  price DECIMAL(15,2) NOT NULL,
+  user_id BIGINT,
+  PRIMARY KEY (id),
+  CONSTRAINT fk_properties_user
+    FOREIGN KEY (user_id)
+    REFERENCES users(id)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE
+)
+
+-- ===============================
+
+INSERT INTO properties (title, description, type, price)
+VALUES
+('Property 1', 'Description 1', 'buy', 100000),
+('Property 2', 'Description 2', 'buy', 110000),
+('Property 3', 'Description 3', 'buy', 120000),
+('Property 4', 'Description 4', 'buy', 130000),
+('Property 5', 'Description 5', 'buy', 140000),
+('Property 6', 'Description 6', 'buy', 150000),
+('Property 7', 'Description 7', 'buy', 160000),
+('Property 8', 'Description 8', 'buy', 170000),
+('Property 9', 'Description 9', 'buy', 180000),
+('Property 10', 'Description 10', 'buy', 190000),
+('Property 11', 'Description 11', 'buy', 200000),
+('Property 12', 'Description 12', 'buy', 210000),
+('Property 13', 'Description 13', 'buy', 220000),
+('Property 14', 'Description 14', 'buy', 230000),
+('Property 15', 'Description 15', 'buy', 240000),
+('Property 16', 'Description 16', 'buy', 250000),
+('Property 17', 'Description 17', 'buy', 260000),
+('Property 18', 'Description 18', 'buy', 270000),
+('Property 19', 'Description 19', 'buy', 280000),
+('Property 20', 'Description 20', 'buy', 290000),
+('Property 21', 'Description 21', 'buy', 300000),
+('Property 22', 'Description 22', 'buy', 310000),
+('Property 23', 'Description 23', 'buy', 320000),
+('Property 24', 'Description 24', 'buy', 330000),
+('Property 25', 'Description 25', 'buy', 340000),
+('Property 26', 'Description 26', 'buy', 350000),
+('Property 27', 'Description 27', 'buy', 360000),
+('Property 28', 'Description 28', 'buy', 370000),
+('Property 29', 'Description 29', 'buy', 380000),
+('Property 30', 'Description 30', 'buy', 390000)
+
+-- ===============================
+
+select * from properties
+
+-- ===============================
+
+SELECT * FROM student AS s LEFT JOIN course AS c ON s.student_id = c.id WHERE c.id IS NULL
+UNION
+SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id WHERE s.student_id IS NULL
+
+-- ===============================
+
+ALTER TABLE `realestateservices`.`user` 
+RENAME TO  `realestateservices`.`users`
+
+-- ===============================
+
+select * from users
+
+-- ===============================
+
+CREATE DATABASE IF NOT EXISTS employee
+
+-- ===============================
+
+USE employee
+
+-- ===============================
+
+CREATE TABLE PAYMENT(
+ customer_id INT PRIMARY KEY,
+ customer VARCHAR(30),
+ mode VARCHAR(20),
+ city VARCHAR(20)
+)
+
+-- ===============================
+
+SELECT * FROM student
+
+-- ===============================
+
+select * from users
+
+-- ===============================
+
+select * from student
+
+-- ===============================
+CREATE DATABASE studentdb;
+USE studentdb;
+
+CREATE TABLE student (
+    rollno INT PRIMARY KEY,
+    name VARCHAR(50),
+    marks VARCHAR(10),
+    grade VARCHAR(5),
+    city VARCHAR(50)
+);
+
+select * from student
+
