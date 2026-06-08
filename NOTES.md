@@ -1146,41 +1146,6 @@ CREATE TABLE properties (
     ON UPDATE CASCADE
 )
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-INSERT INTO properties (title, description, type, price)
-VALUES
-('Property 1', 'Description 1', 'buy', 100000),
-('Property 2', 'Description 2', 'buy', 110000),
-('Property 3', 'Description 3', 'buy', 120000),
-('Property 4', 'Description 4', 'buy', 130000),
-('Property 5', 'Description 5', 'buy', 140000),
-('Property 6', 'Description 6', 'buy', 150000),
-('Property 7', 'Description 7', 'buy', 160000),
-('Property 8', 'Description 8', 'buy', 170000),
-('Property 9', 'Description 9', 'buy', 180000),
-('Property 10', 'Description 10', 'buy', 190000),
-('Property 11', 'Description 11', 'buy', 200000),
-('Property 12', 'Description 12', 'buy', 210000),
-('Property 13', 'Description 13', 'buy', 220000),
-('Property 14', 'Description 14', 'buy', 230000),
-('Property 15', 'Description 15', 'buy', 240000),
-('Property 16', 'Description 16', 'buy', 250000),
-('Property 17', 'Description 17', 'buy', 260000),
-('Property 18', 'Description 18', 'buy', 270000),
-('Property 19', 'Description 19', 'buy', 280000),
-('Property 20', 'Description 20', 'buy', 290000),
-('Property 21', 'Description 21', 'buy', 300000),
-('Property 22', 'Description 22', 'buy', 310000),
-('Property 23', 'Description 23', 'buy', 320000),
-('Property 24', 'Description 24', 'buy', 330000),
-('Property 25', 'Description 25', 'buy', 340000),
-('Property 26', 'Description 26', 'buy', 350000),
-('Property 27', 'Description 27', 'buy', 360000),
-('Property 28', 'Description 28', 'buy', 370000),
-('Property 29', 'Description 29', 'buy', 380000),
-('Property 30', 'Description 30', 'buy', 390000)
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
