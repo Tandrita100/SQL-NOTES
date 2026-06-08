@@ -1183,35 +1183,4 @@ VALUES
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-select * from properties
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-SELECT * FROM student AS s LEFT JOIN course AS c ON s.student_id = c.id WHERE c.id IS NULL
-UNION
-SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id WHERE s.student_id IS NULL
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-CREATE TABLE PAYMENT(
- customer_id INT PRIMARY KEY,
- customer VARCHAR(30),
- mode VARCHAR(20),
- city VARCHAR(20)
-)
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-CREATE DATABASE studentdb;
-USE studentdb;
-
-CREATE TABLE student (
-    rollno INT PRIMARY KEY,
-    name VARCHAR(50),
-    marks VARCHAR(10),
-    grade VARCHAR(5),
-    city VARCHAR(50)
-);
-
-select * from student
 
