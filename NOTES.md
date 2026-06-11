@@ -1101,50 +1101,6 @@ CREATE TABLE `realestateservices`.`properties` (
     ON UPDATE CASCADE
 )
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-SELECT * FROM student AS s LEFT JOIN course AS c ON s.student_id = c.id WHERE c.id IS NULL
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id WHERE s.id IS NULL
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id WHERE c.id IS NULL
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id WHERE s.id IS NULL
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-SELECT * FROM student AS s RIGHT JOIN course AS c ON s.student_id = c.id WHERE s.student_id IS NULL
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-select * from Orders
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-CREATE TABLE properties (
-  id BIGINT NOT NULL AUTO_INCREMENT,
-  title VARCHAR(255) NOT NULL,
-  description VARCHAR(500),
-  type VARCHAR(50) NOT NULL,
-  price DECIMAL(15,2) NOT NULL,
-  user_id BIGINT,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_properties_user
-    FOREIGN KEY (user_id)
-    REFERENCES users(id)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE
-)
 
 
 
