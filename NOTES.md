@@ -879,7 +879,17 @@ SELECT item_name FROM clothingstore WHERE item_no = ALL (SELECT item_no FROM Sup
 
 
 
+DELETE
+↓
+Delete rows
 
+TRUNCATE
+↓
+Empty the table
+
+DROP
+↓
+Remove the entire table
 
 
 
