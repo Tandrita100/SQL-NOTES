@@ -891,5 +891,26 @@ DROP
 ↓
 Remove the entire table
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Joins
+INNER JOIN
+"INNER JOIN returns only the matching records from both tables."
+```SELECT s.name, m.marks FROM Students s INNER JOIN Marks m ON s.student_id = m.student_id;```
+
+LEFT JOIN
+"LEFT JOIN returns all records from the left table and the matching records from the right table. If there is no match, it returns NULL."
+```SELECT s.name, m.marks FROM Students s LEFT JOIN Marks m ON s.student_id = m.student_id;```
+
+RIGHT JOIN
+"RIGHT JOIN returns all records from the right table and the matching records from the left table. If there is no match, it returns NULL."
+```SELECT s.name, m.marks FROM Students s RIGHT JOIN Marks m ON s.student_id = m.student_id;```
+
+FULL OUTER JOIN
+"FULL OUTER JOIN returns all records from both tables. If there is no match, NULL is returned for the missing side."
+```SELECT s.name, m.marks FROM Students s FULL OUTER JOIN Marks m ON s.student_id = m.student_id;```
+
+(Some databases like MySQL don't support FULL OUTER JOIN directly.)
+
 
 
