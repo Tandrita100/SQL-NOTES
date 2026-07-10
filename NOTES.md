@@ -915,12 +915,14 @@ FULL OUTER JOIN
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 "UNION combines the results of two or more SELECT queries and removes duplicate rows. UNION ALL also combines the results but keeps duplicate rows."
+
 Example-
 ```SELECT city FROM table1
 UNION
 SELECT city FROM table2;```
- 
+
 and
+
 ```SELECT city FROM table1
 UNION ALL
 SELECT city FROM table2;```
