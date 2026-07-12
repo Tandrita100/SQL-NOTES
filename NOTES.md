@@ -931,7 +931,11 @@ SELECT city FROM table2;
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
 Type  |  Purpose  |  Commands
+
 DDL  |  Defines database structure  |  CREATE, ALTER, DROP, TRUNCATE
+
 DML |   Manipulates data  |  INSERT, UPDATE, DELETE, SELECT*
+
 DCL  |  Controls permissions  |  GRANT, REVOKE
+
 TCL  |  Controls transactions  |  COMMIT, ROLLBACK, SAVEPOINT 
