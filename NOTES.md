@@ -939,3 +939,17 @@ DML |   Manipulates data  |  INSERT, UPDATE, DELETE, SELECT*
 DCL  |  Controls permissions  |  GRANT, REVOKE
 
 TCL  |  Controls transactions  |  COMMIT, ROLLBACK, SAVEPOINT 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+"SQL constraints are rules applied to a table or its columns to ensure valid data is stored in the database. Common constraints are PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, and DEFAULT."
+
+PRIMARY KEY → Must be unique.
+
+FOREIGN KEY → Connects tables.
+
+UNIQUE → No duplicate values.
+
+NOT NULL → Cannot be empty.
+
+DEFAULT → Assigns a default value if none is provided. 
